@@ -1,0 +1,37 @@
+{
+  "name": "@malots/search-cities",
+  "version": "1.0.0",
+  "description": "It's a package that works offline and return cities using latitude, longitude and radius",
+  "main": "index.js",
+  "scripts": {
+    "test": "babel-node ./test/tests.js",
+    "build": "npx babel ./src/SearchCities.js --out-file index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malots/search-cities.git"
+  },
+  "keywords": [
+    "search",
+    "cities",
+    "lontitude",
+    "latitude",
+    "radius"
+  ],
+  "author": "leovene",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malots/search-cities/issues"
+  },
+  "homepage": "https://github.com/malots/search-cities#readme",
+  "dependencies": {
+    "all-the-cities": "^2.0.1",
+    "geokdbush": "^1.1.0",
+    "kdbush": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "tape": "^4.9.1"
+  }
+}
