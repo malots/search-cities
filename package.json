@@ -1,6 +1,6 @@
 {
   "name": "@malots/search-cities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "It's a package that works offline and return cities using latitude, longitude and radius",
   "main": "index.js",
   "scripts": {

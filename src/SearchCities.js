@@ -22,7 +22,6 @@ class SearchCities {
                     message: 'Not found'
                 };
             }
-            
         } else {
             return {
                 status: false,
