@@ -34,8 +34,8 @@ var SearchCities = function () {
     }
 
     _createClass(SearchCities, [{
-        key: 'search',
-        value: function search(latitude, longitude, radius, maxResults) {
+        key: 'geosearch',
+        value: function geosearch(latitude, longitude, radius, maxResults) {
             if (!isNaN(latitude) && !isNaN(longitude)) {
                 var result = _geokdbush2.default.around(_expression, longitude, latitude, maxResults, radius);
                 if (result.length > 0) {
@@ -53,6 +53,28 @@ var SearchCities = function () {
                 return {
                     status: false,
                     message: 'Latitude and Longitude must be numbers'
+                };
+            }
+        }
+    }, {
+        key: 'namesearch',
+        value: function namesearch(name, radius, maxResults) {
+            if (name != null && name != '') {
+                var result = _allTheCities2.default.filter(function (city) {
+                    return city.name == name;
+                });
+                if (result.length > 0) {
+                    return this.geosearch(result[0].lat, result[0].lon, radius, maxResults);
+                } else {
+                    return {
+                        status: false,
+                        message: 'Not found'
+                    };
+                }
+            } else {
+                return {
+                    status: false,
+                    message: 'Name is required'
                 };
             }
         }

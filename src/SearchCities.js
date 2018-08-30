@@ -8,7 +8,7 @@ const _expression = kdbush(cities, v => v.lon, v => v.lat);
 
 class SearchCities {
 
-    search(latitude, longitude, radius, maxResults) {
+    geosearch(latitude, longitude, radius, maxResults) {
         if (!isNaN(latitude) && !isNaN(longitude)) {
             let result = geokdbush.around(_expression, longitude, latitude, maxResults, radius);
             if (result.length > 0) {
@@ -26,6 +26,27 @@ class SearchCities {
             return {
                 status: false,
                 message: 'Latitude and Longitude must be numbers'
+            };
+        }
+    }
+
+    namesearch(name, radius, maxResults) {
+        if (name != null && name != '') {
+            let result = cities.filter(city => {
+                return city.name == name;
+            });
+            if (result.length > 0) {
+                return this.geosearch(result[0].lat,result[0].lon,radius,maxResults);
+            } else {
+                return {
+                    status: false,
+                    message: 'Not found'
+                };
+            }
+        } else {
+            return {
+                status: false,
+                message: 'Name is required'
             };
         }
     }
