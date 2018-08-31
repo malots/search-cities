@@ -61,7 +61,7 @@ var SearchCities = function () {
         value: function namesearch(name, radius, maxResults) {
             if (name != null && name != '') {
                 var result = _allTheCities2.default.filter(function (city) {
-                    return city.name == name;
+                    return city.name.toLowerCase().trim() == name.toLowerCase().trim();
                 });
                 if (result.length > 0) {
                     return this.geosearch(result[0].lat, result[0].lon, radius, maxResults);

@@ -33,7 +33,7 @@ class SearchCities {
     namesearch(name, radius, maxResults) {
         if (name != null && name != '') {
             let result = cities.filter(city => {
-                return city.name == name;
+                return city.name.toLowerCase().trim() == name.toLowerCase().trim();
             });
             if (result.length > 0) {
                 return this.geosearch(result[0].lat,result[0].lon,radius,maxResults);
